@@ -1,4 +1,5 @@
 import pygame, time, random
+from game_functions import *
 
 pygame.init()
 
@@ -64,6 +65,7 @@ letra_X = 380
 letra_Y = 10 - letra_altura
 letra_velo = 5
 
+contador = 0
 while True:
     display.fill((0, 0, 0))
     display.blit(backgroud,(0, 0))
@@ -71,8 +73,102 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                livro_movi = livro_velo * -1
+            elif event.key == pygame.K_RIGHT:
+                livro_movi = livro_velo
+        if event.type == pygame.KEYUP:
+            livro_movi = 0
+    livro_X = livro_X + livro_movi 
+    if livro_X < 0: 
+        livro_X = 0
+    elif livro_X > largura - livro_largura:
+        livro_X = largura - livro_largura
+    display.blit(livro,(livro_X,livro_Y))                    
 
+    lapis_Y = lapis_Y + lapis_velo
+    if lapis_Y > altura:
+        lapis_Y = 10 - lapis_altura
+        lapis_velo = lapis_velo + 0.8
+        lapis_X = random.randrange(0, largura)
+    display.blit(lapis,(lapis_X,lapis_Y))
 
+    letra_Y = letra_Y + letra_velo
+    if contador == 0:
+        letra = letraA
+    elif contador == 1:
+        letra = letraB
+    elif contador == 2:
+        letra = letraC
+    elif contador == 3: 
+        letra = letraD
+    elif contador == 4: 
+        letra = letraE
+    elif contador == 5: 
+        letra = letraF
+    elif contador == 6: 
+        letra = letraG
+    elif contador == 7: 
+        letra = letraH
+    elif contador == 8: 
+        letra = letraI
+    elif contador == 9: 
+        letra = letraJ
+    elif contador == 10: 
+        letra = letraK
+    elif contador == 11: 
+        letra = letraL
+    elif contador == 12: 
+        letra = letraM
+    elif contador == 13: 
+        letra = letraN
+    elif contador == 14: 
+        letra = letraO
+    elif contador == 15: 
+        letra = letraP
+    elif contador == 16: 
+        letra = letraQ
+    elif contador == 17: 
+        letra = letraR
+    elif contador == 18: 
+        letra = letraS
+    elif contador == 19: 
+        letra = letraT
+    elif contador == 20: 
+        letra = letraU
+    elif contador == 21: 
+        letra = letraV
+    elif contador == 22: 
+        letra = letraW
+    elif contador == 23: 
+        letra = letraX
+    elif contador == 24: 
+        letra = letraY
+    elif contador == 25: 
+        letra = letraZ
+    
+    if letra_Y > altura:
+        letra_Y = 5 - letra_altura
+        letra_velo = letra_velo + 0.5
+        letra_X = random.randrange(0, largura)
+    display.blit(letra,(letra_X, letra_Y))
+
+    if livro_Y < lapis_Y + lapis_altura:
+        if livro_X < lapis_X and livro_X + livro_largura > lapis_X or lapis_X + lapis_largura > livro_X and lapis_X + lapis_largura < livro_X + livro_largura:
+            lapis_velo = 5
+            lapis_Y = 0 - lapis_altura
+            texto = colisao_lapis()
+            display.blit(texto,(100,200))
+            pygame.display.update()
+            time.sleep(5)
+            
+    if livro_Y < letra_Y + letra_altura: 
+        if livro_X < letra_X and livro_X + livro_largura > letra_X or letra_X + letra_largura > livro_X and letra_X + letra_largura < livro_X + livro_largura:
+            letra_velo = 5
+            letra_Y = 0 - letra_altura
+            contador += 1
+            letra_X = random.randrange(0, largura)
 
 
 
