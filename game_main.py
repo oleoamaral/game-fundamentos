@@ -90,11 +90,13 @@ while True:
     lapis_Y = lapis_Y + lapis_velo
     if lapis_Y > altura:
         lapis_Y = 10 - lapis_altura
-        lapis_velo = lapis_velo + 0.8
+        lapis_velo = lapis_velo + 0.5
         lapis_X = random.randrange(0, largura)
     display.blit(lapis,(lapis_X,lapis_Y))
 
     letra_Y = letra_Y + letra_velo
+    letras_add = score(contador)
+    display.blit(letras_add, (10,10))
     if contador == 0:
         letra = letraA
     elif contador == 1:
@@ -147,11 +149,17 @@ while True:
         letra = letraY
     elif contador == 25: 
         letra = letraZ
-    
+    elif contador == 26: 
+        text = ganhou()
+        display.blit(text, (100,200))
+        pygame.display.update()
+        time.sleep(5)
+        quit()
+
     if letra_Y > altura:
         letra_Y = 5 - letra_altura
         letra_velo = letra_velo + 0.5
-        letra_X = random.randrange(0, largura)
+        letra_X = random.randrange(0, largura-100)
     display.blit(letra,(letra_X, letra_Y))
 
     if livro_Y < lapis_Y + lapis_altura:
@@ -162,6 +170,7 @@ while True:
             display.blit(texto,(100,200))
             pygame.display.update()
             time.sleep(5)
+            quit()
             
     if livro_Y < letra_Y + letra_altura: 
         if livro_X < letra_X and livro_X + livro_largura > letra_X or letra_X + letra_largura > livro_X and letra_X + letra_largura < livro_X + livro_largura:
@@ -169,6 +178,7 @@ while True:
             letra_Y = 0 - letra_altura
             contador += 1
             letra_X = random.randrange(0, largura)
+            
 
 
 
