@@ -4,9 +4,7 @@ from game_functions import *
 pygame.init()
 
 #NOME DO JOGO E ÍCONE
-pygame.display.set_caption("Ainda sem nome")
-icon = pygame.image.load("assets/abc.png")
-pygame.display.set_icon(icon)
+name_icon()
 
 #TELA 
 largura = 800
@@ -65,6 +63,14 @@ letra_X = 380
 letra_Y = 10 - letra_altura
 letra_velo = 5
 
+arquivo = open("dados.txt", "a")
+nome = input("Informe seu nome: ")
+email = email("Informe seu e-mail: ")
+arquivo.write(nome+'\n')
+arquivo.write(email+'\n')
+arquivo.close()
+
+musica()
 contador = 0
 while True:
     display.fill((0, 0, 0))
@@ -90,8 +96,9 @@ while True:
     lapis_Y = lapis_Y + lapis_velo
     if lapis_Y > altura:
         lapis_Y = 10 - lapis_altura
-        lapis_velo = lapis_velo + 0.5
-        lapis_X = random.randrange(0, largura)
+        lapis_velo = lapis_velo + 0.3
+        barulho_lapis()
+        lapis_X = random.randrange(0, largura-50)
     display.blit(lapis,(lapis_X,lapis_Y))
 
     letra_Y = letra_Y + letra_velo
@@ -159,7 +166,7 @@ while True:
     if letra_Y > altura:
         letra_Y = 5 - letra_altura
         letra_velo = letra_velo + 0.5
-        letra_X = random.randrange(0, largura-100)
+        letra_X = random.randrange(0, largura)
     display.blit(letra,(letra_X, letra_Y))
 
     if livro_Y < lapis_Y + lapis_altura:
@@ -177,10 +184,8 @@ while True:
             letra_velo = 5
             letra_Y = 0 - letra_altura
             contador += 1
-            letra_X = random.randrange(0, largura)
+            barulho_letra()
+            letra_X = random.randrange(0, largura-70)
             
-
-
-
     pygame.display.update()
     clock.tick(60)
