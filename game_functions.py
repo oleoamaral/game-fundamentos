@@ -2,8 +2,8 @@ import pygame, time
 
 def colisao_lapis():
     font = pygame.font.SysFont(None,150)
-    text = font.render("Você morreu", True, (22, 100, 132))
-
+    text = font.render("Você perdeu!", True, (22, 100, 132))
+    
     return text
 
 def score(contador):
@@ -43,7 +43,12 @@ def email(mensagem):
             print("Valor informado incorretamente!")
 
 def name_icon():
-    pygame.display.set_caption("Ainda sem nome")
+    pygame.display.set_caption("Abecedário")
     icon = pygame.image.load("assets/abc.png")
     pygame.display.set_icon(icon)
+
+def acerto_lapis():
+    acerto_lapis = pygame.mixer.Sound("assets/acerto.wav")
+    acerto_lapis.set_volume(0.5)
+    pygame.mixer.Sound.play(acerto_lapis)
 

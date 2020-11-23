@@ -83,7 +83,7 @@ while True:
             if event.key == pygame.K_LEFT:
                 livro_movi = livro_velo * -1
             elif event.key == pygame.K_RIGHT:
-                livro_movi = livro_velo
+                livro_movi = livro_velo         
         if event.type == pygame.KEYUP:
             livro_movi = 0
     livro_X = livro_X + livro_movi 
@@ -160,7 +160,7 @@ while True:
         text = ganhou()
         display.blit(text, (100,200))
         pygame.display.update()
-        time.sleep(5)
+        time.sleep(3)
         quit()
 
     if letra_Y > altura:
@@ -173,10 +173,11 @@ while True:
         if livro_X < lapis_X and livro_X + livro_largura > lapis_X or lapis_X + lapis_largura > livro_X and lapis_X + lapis_largura < livro_X + livro_largura:
             lapis_velo = 5
             lapis_Y = 0 - lapis_altura
+            acerto_lapis()
             texto = colisao_lapis()
             display.blit(texto,(100,200))
             pygame.display.update()
-            time.sleep(5)
+            time.sleep(3)
             quit()
             
     if livro_Y < letra_Y + letra_altura: 
@@ -186,6 +187,6 @@ while True:
             contador += 1
             barulho_letra()
             letra_X = random.randrange(0, largura-70)
-            
+          
     pygame.display.update()
     clock.tick(60)
