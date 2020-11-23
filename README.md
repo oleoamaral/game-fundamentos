@@ -14,7 +14,7 @@ No jogo o usuário irá controlar um livro mágico :green_book: que deve coletar
 
 
 ## :rocket: Desenvolvido por:
-:octocat: Leonardo Amaral 
+:octocat: **Leonardo Amaral 
 
 :e-mail: oleoamaral@gmail.com
 
