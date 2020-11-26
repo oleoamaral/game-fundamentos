@@ -1,6 +1,13 @@
 import pygame, time, random
 from game_functions import *
 
+arquivo = open("dados.txt", "a")
+nome = input("Informe seu nome: ")
+email = email("Informe seu e-mail: ")
+arquivo.write(nome+'\n')
+arquivo.write(email+'\n')
+arquivo.close()
+
 pygame.init()
 
 #NOME DO JOGO E ÍCONE
@@ -62,13 +69,6 @@ letra_altura = 70
 letra_X = 380
 letra_Y = 10 - letra_altura
 letra_velo = 5
-
-arquivo = open("dados.txt", "a")
-nome = input("Informe seu nome: ")
-email = email("Informe seu e-mail: ")
-arquivo.write(nome+'\n')
-arquivo.write(email+'\n')
-arquivo.close()
 
 musica()
 contador = 0
