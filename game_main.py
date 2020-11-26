@@ -10,17 +10,14 @@ arquivo.close()
 
 pygame.init()
 
-#NOME DO JOGO E ÍCONE
 name_icon()
 
-#TELA 
 largura = 800
 altura = 600
 display = pygame.display.set_mode((largura,altura))
 backgroud = pygame.image.load("assets/fundo.jpg")
 clock = pygame.time.Clock()
 
-#LIVRO 
 livro = pygame.image.load("assets/livro.png")
 livro_largura = 124
 livro_X = 360
@@ -28,7 +25,6 @@ livro_Y = 460
 livro_movi = 0
 livro_velo = 10
 
-#LÁPIS
 lapis = pygame.image.load("assets/lapis.png")
 lapis_largura = 50
 lapis_altura = 200
@@ -37,7 +33,6 @@ lapis_Y = 10 - lapis_altura
 lapis_movi = 0
 lapis_velo = 5
 
-#LETRAS
 letraA = pygame.image.load("assets/A.png")
 letraB = pygame.image.load("assets/B.png")
 letraC = pygame.image.load("assets/C.png")
